@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import argparse
 import os
+import sys
 from glob import glob
 from PIL import Image
 import concurrent.futures
@@ -16,8 +17,6 @@ src = args.source
 ftype = args.ftype
 dst = args.dest
 COORDS = tuple(args.coords)
-
-#coords = (489,269,759,458)
 
 def crop_image(src_img):
     im = Image.open(src_img)
@@ -42,6 +41,9 @@ def crop_all_images(img_list):
 
 def main():
     if os.path.isdir(src):
+        if ftype is None: 
+            print("you must specify a file type when sourcing from a directory")
+            sys.exit()
         img_list = get_image_paths(src, ftype)
         crop_all_images(img_list)
     elif os.path.isfile(src):
