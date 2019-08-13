@@ -4,7 +4,6 @@ import os
 from glob import glob
 from PIL import Image
 import concurrent.futures
-import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--source', help='image or directory of images to be cropped', required=True) 
@@ -49,7 +48,4 @@ def main():
         crop_image(src)
 
 if __name__ == "__main__":
-    start_time= time.time()
     main()
-    duration = time.time() - start_time
-    print(f"finished in {duration} seconds.")
