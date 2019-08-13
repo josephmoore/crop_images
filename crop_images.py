@@ -23,7 +23,8 @@ def crop_image(src_img):
     im_crop = im.crop(COORDS)
     im_crop.save(dst)
 
-def crop_multi_image(src_img):
+def crop_image_to_dir(src_img):
+    #uses src to create filename for output to dir
     image_name = os.path.basename(src_img)
     im = Image.open(src_img)
     im_crop = im.crop(COORDS)
@@ -37,7 +38,7 @@ def get_image_paths(src_dir, ftype):
 
 def crop_all_images(img_list):
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-        executor.map(crop_multi_image, img_list)
+        executor.map(crop_image_to_dir, img_list)
 
 def main():
     if os.path.isdir(src):
