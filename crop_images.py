@@ -26,7 +26,6 @@ def crop_image(src_img):
 
 
 def crop_image_to_dir(src_img):
-    # uses src to create filename for output to dir
     image_name = os.path.basename(src_img)
     im = Image.open(src_img)
     im_crop = im.crop(COORDS)
