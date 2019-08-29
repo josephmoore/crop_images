@@ -33,10 +33,8 @@ def crop_image_to_dir(src_img):
 
 
 def get_image_paths(src_dir, ftype):
-    img_list = []
-    for f in glob(src_dir + "*." + ftype):
-        img_list.append(f)
-    return img_list
+    img_paths = [f for f in glob.glob(f"{src_dir}*.{ftype}")]
+    return img_paths
 
 
 def crop_all_images(img_list):
